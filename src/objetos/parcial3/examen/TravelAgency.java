@@ -34,6 +34,14 @@ public class TravelAgency {
     }
 
     public UserAccount findAccount(String id1) {
+        Node<UserAccount> iteratorNode = head;
+        int indexIteratorNode = 0;
+
+        while (indexIteratorNode < id1){
+            iteratorNode = iteratorNode.next;
+            indexIteratorNode++;
+        }
+        return iteratorNode;
     }
 
     public UserAccount findAccountByEmail(String s) {
