@@ -1,61 +1,75 @@
 package objetos.parcial3.examen;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TravelAgency {
 
-    private Node<UserAccount> head;
-    private Node<UserAccount> tail;
-    private int size;
 
+   private List<UserAccount> travelAgency = new ArrayList<>();
 
-    private static class Node<H> extends UserAccount {
-        Node<H> next;
-        Node<H> previous;
-        H data;
+    public String  addUserAccount(UserAccount userAccount1)  {
 
-        public Node(H data) {
-            this.data = data;
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getPhoneNumber().equals( userAccount1.getPhoneNumber() )){
+                throw new DuplicatedPhoneNumbersNotAllowedException("This Phone number is already in use ");
+            }
         }
+
+
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getEmail().equals( userAccount1.getEmail() )){
+                throw new DuplicatedEmailsNotAllowedException("This email is already in use ");
+            }
+        }
+
+        travelAgency.add(userAccount1);
+
+        return userAccount1.getId();
+    }
+
+    public UserAccount findAccount(String id1){
+
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getId().equals(id1)){
+                return userAccount;
+            }
+        }
+        throw new AccountNotFoundException("The Account has not been founded");
 
     }
 
-    
-    
-    public String addUserAccount(UserAccount userAccount1) {
-        Node<UserAccount> node = new Node<>(userAccount1);
-        node.next= head;
-        head = node;
+    public UserAccount findAccountByEmail(String s){
 
-        if( tail == null) {
-            tail = node;
-        }else{
-            node.next.previous = node;
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getEmail().equals(s)){
+                return userAccount;
+            }
         }
-        size++;
+        throw new AccountNotFoundException("The Account has not been founded");
     }
 
-    public UserAccount findAccount(String id1) {
-        Node<UserAccount> iteratorNode = head;
-        int indexIteratorNode = 0;
+    public UserAccount findAccountByPhoneNumber(String s){
 
-        while (indexIteratorNode < id1){
-            iteratorNode = iteratorNode.next;
-            indexIteratorNode++;
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getPhoneNumber().equals(s)){
+                return userAccount;
+            }
         }
-        return iteratorNode;
+        throw new AccountNotFoundException("The Account has not been founded");
     }
 
-    public UserAccount findAccountByEmail(String s) {
-        Node<UserAccount> iteratorNode = head;
-        int indexIteratorNode = ;
+    public UserAccount removeAccount(String id1) {
 
-        int index = 0;
-        while (indexIteratorNode != s){
-            iteratorNode = iteratorNode.next;
-            indexIteratorNode++;
+
+        for(UserAccount userAccount: travelAgency){
+            if(userAccount.getId().equals(id1)){
+                travelAgency.remove(id1);
+            }else{
+                throw new AccountNotPresentOnRemoveAttemptException("The Account can´t be Removed, because it doesnt exist");
+            }
         }
-        return iteratorNode;
-    }
-
-    public UserAccount findAccountByPhoneNumber(String s) {
+        return null;
     }
 }

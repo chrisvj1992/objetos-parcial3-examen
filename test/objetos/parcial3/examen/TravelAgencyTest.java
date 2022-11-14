@@ -40,7 +40,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenFindUserAccountByEmail_thenAccountIsRetrieved() {
+    public void givenTravelAgency_whenFindUserAccountByEmail_thenAccountIsRetrieved(){
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("user1@gmail.com", "Ivan", "78397", "4442225553");
@@ -96,7 +96,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenFindUserAccountByPhoneNumberNotExistent_thenExceptionIsThrown() {
+    public void givenTravelAgency_whenFindUserAccountByPhoneNumberNotExistent_thenExceptionIsThrown()  {
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("user1@gmail.com", "Ivan", "78397", "4442225553");
@@ -124,7 +124,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenAddUserWithNoEmail_thenExceptionIsThrown() {
+    public void givenTravelAgency_whenAddUserWithNoEmail_thenExceptionIsThrown()  {
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount(null, "Ivan", "78397", "4442225553");
@@ -134,7 +134,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenAddUserWithNoPhoneNumber_thenExceptionIsThrown() {
+    public void givenTravelAgency_whenAddUserWithNoPhoneNumber_thenExceptionIsThrown(){
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("test@gmail.com", "Ivan", "78397", null);
@@ -157,7 +157,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenPhoneNumberAlreadyExists_thenExceptionIsThrown() {
+    public void givenTravelAgency_whenPhoneNumberAlreadyExists_thenExceptionIsThrown(){
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("user1@gmail.com", "Ivan", "78397", "4442225553");
@@ -170,7 +170,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenRemoveUserAccount_thenAccountIsRemoved() throws AccountNotPresentOnRemoveAttemptException {
+    public void givenTravelAgency_whenRemoveUserAccount_thenAccountIsRemoved() {
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("user1@gmail.com", "Ivan", "78397", "4442225553");
@@ -188,7 +188,7 @@ public class TravelAgencyTest {
     }
 
     @Test
-    public void givenTravelAgency_whenRemoveUserAccountThatDoesNotExist_thenExceptionIsThrown() throws AccountNotPresentOnRemoveAttemptException {
+    public void givenTravelAgency_whenRemoveUserAccountThatDoesNotExist_thenExceptionIsThrown(){
         // Given:
         TravelAgency travelAgency = new TravelAgency();
         UserAccount userAccount1 = buildUserAccount("user1@gmail.com", "Ivan", "78397", "4442225553");

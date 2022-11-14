@@ -1,14 +1,16 @@
 package objetos.parcial3.examen;
 
 public class UserAccount {
-    private  int id;
+    private  String id;
     private String email;
     private String name;
     private String zipCode;
     private String phoneNumber;
 
-
-    public void setEmail(String email) {
+    public void setEmail(String email){
+        if(email == null){
+            throw new  EmailRequiredException("The Email is Required");
+        }
         this.email = email;
     }
 
@@ -20,7 +22,10 @@ public class UserAccount {
         this.zipCode = zipCode;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber)  {
+        if(phoneNumber == null){
+            throw new PhoneNumberRequiredException("The Email is Required");
+        }
         this.phoneNumber = phoneNumber;
     }
 
@@ -28,23 +33,12 @@ public class UserAccount {
         return email;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }
